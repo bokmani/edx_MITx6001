@@ -1,0 +1,53 @@
+def longest_run(L):
+    """
+    Assumes L is a list of integers containing at least 2 elements.
+    Finds the longest run of numbers in L, where the longest run can
+    either be monotonically increasing or monotonically decreasing. 
+    In case of a tie for the longest run, choose the longest run 
+    that occurs first.
+    Does not modify the list.
+    Returns the sum of the longest run. 
+    """
+    # Your code here
+    current_list = longest_asending_list = [L[0]]
+
+    for i in L[1:]:
+        if current_list[-1] <= i:
+            current_list.append(i)
+            if(len(current_list) > len(longest_asending_list)):
+                longest_asending_list = current_list
+        else:
+            current_list = [i]
+    
+    current_list = longest_decending_list = [L[0]]
+           
+    for i in L[1:]:
+        if current_list[-1] >= i:
+            current_list.append(i)
+            if(len(current_list) > len(longest_decending_list)):
+                longest_decending_list = current_list
+        else:
+            current_list = [i]
+
+    if len(longest_asending_list) > len(longest_decending_list):
+        return get_sum_list(longest_asending_list)
+    elif len(longest_asending_list) < len(longest_decending_list):
+        return get_sum_list(longest_decending_list)
+    else:
+        if L.index(longest_asending_list[0]) <= L.index(longest_decending_list[0]):
+            return get_sum_list(longest_asending_list)
+        else :
+            return get_sum_list(longest_decending_list)
+
+def get_sum_list(L):
+    sum = 0
+    for i in L:
+        sum +=i
+    
+    return sum
+
+L = [3, 2, -1, 2, 7]
+
+result = longest_run(L)
+
+print(result)

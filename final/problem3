@@ -1,0 +1,17 @@
+def is_triangular(k):
+    """
+    k, a positive integer
+    returns True if k is triangular and False if not
+    """
+    #YOUR CODE HERE
+    num = 1
+    triangularNo = 0
+    while triangularNo < k:
+        triangularNo += num
+        num += 1
+
+    if triangularNo == k:
+        return True
+    return False
+
+print(is_triangular(10))

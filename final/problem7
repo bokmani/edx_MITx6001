@@ -1,0 +1,34 @@
+class myDict(object):
+    """ Implements a dictionary without using a dictionary """
+    def __init__(self):
+        """ initialization of your representation """
+        #FILL THIS IN
+        self.dictionary = {}
+        
+    def assign(self, k, v):
+        """ k (the key) and v (the value), immutable objects  """
+        #FILL THIS IN
+        self.k = k
+        self.v = v
+        if self.k not in self.dictionary:
+            self.dictionary[self.k] = self.v
+        else:
+            self.dictionary[self.k] = self.v
+        
+    def getval(self, k):
+        """ k, immutable object  """
+        #FILL THIS IN
+        if k in self.dictionary:
+            return self.dictionary[k]
+        else:
+            raise KeyError ('KeyError successfully raised')
+    def delete(self, k):
+        """ k, immutable object """   
+        #FILL THIS IN
+        if k in self.dictionary:
+            del self.dictionary[k]
+        else:
+            raise KeyError ('KeyError successfully raised')    
+
+
+    def
